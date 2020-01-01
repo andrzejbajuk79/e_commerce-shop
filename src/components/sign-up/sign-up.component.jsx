@@ -34,7 +34,7 @@ class SignUp extends React.Component {
 				confirmPassword: ''
 			};
 		} catch (error) {
-			alert(error)
+			alert('error');
 			console.log(error);
 		}
 	};
@@ -75,12 +75,12 @@ class SignUp extends React.Component {
 						required
 					/>
 					<FormInput
-            type='password'
-            name='confirmPassword' 
-            value={confirmPassword}
-            onChange={this.handleChange}
-            label='Confirm Password'
-            required
+						type="password"
+						name="confirmPassword"
+						value={confirmPassword}
+						onChange={this.handleChange}
+						label="Confirm Password"
+						required
 					/>
 					<CustomButton type="submit">Sign Up</CustomButton>
 				</form>
