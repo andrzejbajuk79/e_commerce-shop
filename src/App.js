@@ -54,11 +54,19 @@ class App extends React.Component {
 		);
 	}
 }
-const mapStateToProps =  ({user})  => ({ 
-	currentUser: user.currentUser 
-});
+//APP component nie potrzebuje juz CurrentUser
+//we're going to connect our app to the outcome of our initial connect call using the second argument
+// of Kinect which is map dispatch the props now the first argument is map states props but our app doesn't
+// actually need current user anymore because outside of passing it into our header it only sets it but
+// it doesn't do anything with the current user value in its component itself.
+
+// eraz pierwszym argumentem są rekwizyty stanów map, ale nasza aplikacja nie
+// faktycznie potrzebuje już bieżącego użytkownika, ponieważ poza przekazaniem go do naszego nagłówka ustawia go, ale
+// nie robi nic z bieżącą wartością użytkownika w samym składniku.
+
+
 
 const mapDispatchToProps = dispatch => ({
 	setCurrentUser: user => dispatch(setCurrentUser(user))
 });
-export default connect( mapStateToProps,mapDispatchToProps)(App);
+export default connect( null,mapDispatchToProps)(App);
