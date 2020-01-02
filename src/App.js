@@ -1,14 +1,20 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import {createStructuredSelector}  from 'reselect'
+
 import './App.css';
 
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component.jsx';
  import Loging from './pages/loging/loging.component';
 import Header from './components/header/header.component.jsx';
+import   CheckoutPage from './pages/checkout/checkout.component'
+
 import { setCurrentUser } from './redux/user/user.action';
+import { selectCurrentUser}  from './redux/user/user.selector'
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+
 
 class App extends React.Component {
 	unsubscribeFromAuth = null;
@@ -40,6 +46,7 @@ class App extends React.Component {
 				{/* <Header currentUser={this.state.currentUser} /> */}
 				<Header />
 				<Switch>
+					<Route exact path='/checkout' component={CheckoutPage}/>
 					<Route exact path="/" component={HomePage} />
 					<Route path="/shop" component={ShopPage} />
 					{/* <Route path="/signing" component={Loging} /> */}
@@ -64,9 +71,16 @@ class App extends React.Component {
 // faktycznie potrzebuje już bieżącego użytkownika, ponieważ poza przekazaniem go do naszego nagłówka ustawia go, ale
 // nie robi nic z bieżącą wartością użytkownika w samym składniku.
 
+const mapStateToProps1 = ({ user }) => ({
+  currentUser: user.currentUser
+});
 
+//z reselect
+const mapStateToProps =  createStructuredSelector({
+  currentUser:selectCurrentUser
+});
 
 const mapDispatchToProps = dispatch => ({
 	setCurrentUser: user => dispatch(setCurrentUser(user))
 });
-export default connect( null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);
