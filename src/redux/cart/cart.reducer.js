@@ -1,5 +1,5 @@
 import { CartActionTypes } from './cart.types';
-import { addItemToCart }  from './cart.utils'
+import { addItemToCart,removeItemFromCart} from './cart.utils';
 
 const INITIAL_STATE = {
 	hidden: true,
@@ -21,8 +21,24 @@ const cartReducer = (state = INITIAL_STATE, action) => {
 				//musimy zdefiniowavc ACTION
 
 				// cartItems: [...state.cartItems, action.payload]
-				cartItems: addItemToCart(state.cartItems,action.payload)
+				cartItems: addItemToCart(state.cartItems, action.payload)
 			};
+
+		//checkout-item
+		//filter zwroci tylko TRUE jesli Id sie nie zgadza z tym co kliknelismy
+		case CartActionTypes.CLEAR_ITEM_FROM_CART:
+			return {
+				...state,
+				cartItems: state.cartItems.filter(
+					cartItem => cartItem.id !== action.payload.id
+				)
+			};
+			case CartActionTypes.REMOVE_ITEM :
+				return {
+					...state,
+					cartItems:removeItemFromCart(state.cartItems, action.payload)
+				};
+		
 		default:
 			return state;
 	}
