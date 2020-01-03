@@ -25,12 +25,6 @@ export const selectCollectionsForPreview = createSelector(
 );
 
 
-//pierwsze 4 elementy z kolekcji
-//  export const select4ItemsFromCollections = createSelector(
-// 	[selectCollections],
-// 	collections=> collections.filter((collections.id)=>collections.id<4)
-//  )
-
 
 
 //collectionpagePage pobieramy match.params.category np:hats
@@ -47,3 +41,9 @@ export const selectCollection = collectionUrlParam =>
     //   // collection => collection.2 === COLLECTIONID_MAP[sneakers] //2
 		// )
 	);
+//pierwsze 4 elementy z kolekcji
+export const select4ItemsFromCollections = createSelector(
+	[selectCollections],
+	collection => collection.filter((idx)=>collection.idx<4)
+ )
+

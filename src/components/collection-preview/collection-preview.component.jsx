@@ -2,14 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-// import { select4ItemsFromCollections } from '../../redux/shop/shop.selector';
+ import { select4ItemsFromCollections } from '../../redux/shop/shop.selector';
 import CollectionItem from '../collection-item/collection-item.component';
 
 import './collection-preview.styles.scss';
 
 //strona na ktorej widzimu szystkie kategoreie i pierwsze 4 elementy z kazdej kategorii
 // const CollectionPreview = ({title,items}) => (
-const CollectionPreview = ({ title, items  }) => {
+const CollectionPreview = ({ title,items}) => {
+  //  const {title,items} = collections
 	return (
 		<div className="collection-preview">
 			<h1 className="title"> {title.toUpperCase()} </h1>
@@ -24,9 +25,9 @@ const CollectionPreview = ({ title, items  }) => {
 	);
 };
 // const mapStateToProps = createStructuredSelector({
-// 	collection: select4ItemsFromCollections
+// 	collections: select4ItemsFromCollections
 // });
 // export default connect(mapStateToProps)(CollectionPreview);
 
-export default CollectionPreview;
+ export default CollectionPreview;
 //obecnie
