@@ -1,9 +1,15 @@
-export const addItemToCart = (cartItems, cartItemToAdd) => {
-	//what we are gonna do is we're going to
-	//look inside of our existing cartItems - dziej sie w  COOLECTIONiTEM   to see if that cart
-	//item already exists
-	// Z REDUCERA POBIERAM 	cartItems: []
+//what we are gonna do is we're going to
+//look inside of our existing cartItems - dziej sie w  COOLECTIONiTEM   to see if that cart
+//item already exists
+// Z REDUCERA POBIERAM 	cartItems: []
+// quantity  gets attacjed the first time around since this
+//  if block won`t run when it`s a new item
 
+// 	return [...cartItems, { ...cartItemToAdd, quantity: 1 }];ilość dostaje się po raz pierwsz
+// ponieważ blok nie uruchomi się, gdy będzie nowym
+// przedmiotem
+
+export const addItemToCart = (cartItems, cartItemToAdd) => {
 	const existingCartItem = cartItems.find(
 		cartItem => cartItem.id === cartItemToAdd.id
 	);
@@ -14,15 +20,10 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 				: cartItem
 		);
 	}
-
 	return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
-// quantity  gets attacjed the first time around since this
-//  if block won`t run when it`s a new item
 
-// ilość dostaje się po raz pierwsz
-// ponieważ blok nie uruchomi się, gdy będzie nowym
-// przedmiotem
+
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
 	const existingCartItem = cartItems.find(
