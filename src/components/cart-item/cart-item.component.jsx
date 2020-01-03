@@ -1,5 +1,7 @@
 import React from 'react';
 import './cart-item.styles.scss';
+//komponent jednego Itemu jaki sie opojawuia na naszej liscie zakupow
+//po nacisnieu ikony koszyka
 
 const CartItem = ({ item: { imageUrl, price, name, quantity } }) => (
 	<div className="cart-item">

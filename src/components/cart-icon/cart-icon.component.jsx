@@ -6,6 +6,9 @@ import { createStructuredSelector } from 'reselect';
 import { toggleCartHidden } from '../../redux/cart/cart.action';
 import { ReactComponent as ShoppingIcon } from '../../assets/shopIcon.svg';
 import { selectCartItemsCount } from '../../redux/cart/cart.selector';
+
+
+//komponent uzywany w hederze ktoru manipuluje obrazkiem za pomoca HIDDEN  koszyka
 const CartIcon = ({ toggleCartHidden, itemCount }) => (
 	<div className="cart-icon" onClick={toggleCartHidden}>
 		<ShoppingIcon className="shopping-icon" />
@@ -23,7 +26,6 @@ const CartIcon = ({ toggleCartHidden, itemCount }) => (
 
 //sprawdzamy czy CartItem sie zmienil
 const mapStateToProps1 = ({ cart: { cartItems } }) => {
-	console.log('zostalem zawolany'); //nieotrzebnie?? generuje rerender
 	return {
 		itemCount: cartItems.reduce(
 			(zsumowanaIlosc, cartItem) => zsumowanaIlosc + cartItem.quantity,

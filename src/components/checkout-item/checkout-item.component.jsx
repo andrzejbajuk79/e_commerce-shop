@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 
 import { clearItemFromCart,addItem,removeItem } from '../../redux/cart/cart.action';
 import './checkout-item.styles.scss';
-
+//strona na ktorej definiujemy jak wyglada poszczegolnyITEM
+//np kapelusz w PREVIEW
 const CheckoutItem = ({ cartItem , clearItem,addItem,removeItem}) => {
 	const{ name, imageUrl, price, quantity } =cartItem;
 	return (
