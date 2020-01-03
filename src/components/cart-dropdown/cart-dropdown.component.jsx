@@ -9,6 +9,8 @@ import CartItem from '../cart-item/cart-item.component';
 import { toggleCartHidden } from '../../redux/cart/cart.action.js';
 import CustomButton from '../../components/custom-button/custom-button.component';
 
+
+///component ktory pojawia sie po nacisnieciu ikony koszyka w prawym gornym rogu
 const CartDropdown = ({ cartItems, history, ...otherProps }) => {
 	console.log(otherProps);
 
